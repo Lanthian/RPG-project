@@ -1,7 +1,7 @@
 Public Class frmRPGProject
 
     '****Defines variables used universally****
-    Dim exp, lvl As Integer
+    Dim exp, lvl, expToLvl As Integer
     Dim task As String
     Dim diff As String
 
@@ -9,6 +9,7 @@ Public Class frmRPGProject
         '****Sets variables to null****
         lvl = 1
         exp = 0
+        expToLvl = 10
     End Sub
 
     Private Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
@@ -31,7 +32,15 @@ Public Class frmRPGProject
             ElseIf diff = "Easy" Then
                 exp -= 1
             End If
-            'MsgBox(exp)
+            '****Converts EXP to level if applicable****
+            If exp >= expToLvl Then
+                exp -= expToLvl
+                lvl += 1
+                expToLvl += 10
+            End If
+            '****Displays Output****
+            lblExp.text = exp
+            lblLvl.text = lvl
         End If
     End Sub
 End Class
