@@ -64,17 +64,9 @@ Public Class frmRPGproject
             '****Checks task frequency And deducts EXP if applicable****
             For i = 0 To 3
                 If taskFreq = i Then
-                    taskFreqArray(i) += 1
-                    For n = -3 To -1
-                        taskFreqArray(i + n) = 0
+                    For n = 0 To 3 And Not i
+                        taskFreqArray(n) = 0
                     Next
-                    For n = 1 To 3
-                        taskFreqArray(i + n) = 0
-                    Next
-                    'TODO****ALTERNATIVE TEST****
-                    'For n = NOT i
-                    '   taskFreqArray(n) = 0
-                    'Next
                 End If
             Next
             For i = 0 To 3 'TODO <- Needed?
