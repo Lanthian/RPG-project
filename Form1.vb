@@ -64,6 +64,7 @@ Public Class frmRPGproject
             '****Checks task frequency And deducts EXP if applicable****
             For i = 0 To 3
                 If taskFreq = i Then
+                    taskFreqArray(i) += 1
                     For n = 0 To 3 And Not i
                         taskFreqArray(n) = 0
                     Next
@@ -87,5 +88,4 @@ Public Class frmRPGproject
             'TODO lblCash.text = ("$$$: " & cash)
         End If
     End Sub
-
 End Class
