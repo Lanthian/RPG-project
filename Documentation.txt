@@ -1,2 +1,3 @@
 2018.07.23:                 XLSX spreadsheet with EXP numbers was added by Liam. 
 2018.07.24.0730:            Form1.VB & Form1.Designer.VB were updated by Liam.
+2018.07.26.0730:            Application.Designer.VB was added and updated by Liam.
