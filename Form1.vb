@@ -1,7 +1,7 @@
 Public Class frmRPGproject
 
     '****Defines variables used universally****
-    Dim exp, lvl, expToLvl, taskFreq As Integer
+    Dim exp, prevExp, lvl, prevLvl, expToLvl, taskFreq, turn As Integer
     'TODO Dim cash as Integer
     Dim task, diff As String
     'TODO Dim db As Database = New Database()
@@ -12,6 +12,9 @@ Public Class frmRPGproject
         lvl = 1
         exp = 0
         expToLvl = 5
+        prevExp = 0
+        prevLvl = 0
+        turn = 0
         'TODO cash = 0
         task = ""
         diff = ""
@@ -39,6 +42,9 @@ Public Class frmRPGproject
         If (String.IsNullOrEmpty(cboTask.Text)) Or (String.IsNullOrEmpty(cboDiff.Text)) Then
             MsgBox("A section has been left blank.")
         Else
+            '****Prepares variables for output display****
+            prevExp = exp
+            turn += 1
             '****Adds EXP depending on difficulty and task****
             task = cboTask.Text
             diff = cboDiff.Text
@@ -75,11 +81,15 @@ Public Class frmRPGproject
                     exp -= 1
                 End If
             Next
-            '****Converts EXP to level if applicable****
+            '****Displays inputs in listbox****
+            lboTask.items.add("[T" & turn & "] " & task & " @ " & diff & " for " & (exp - prevExp))
+            '****Converts EXP to level and displays if applicable****
             If exp >= expToLvl Then
+                prevLvl = lvl
                 exp -= expToLvl
                 lvl += 1
                 expToLvl += 5
+                lboTask.items.add("LEVEL UP: " & prevLvl & " -> " & lvl)
                 'TODO cash += x
             End If
             '****Displays Output****
@@ -88,4 +98,19 @@ Public Class frmRPGproject
             'TODO lblCash.text = ("$$$: " & cash)
         End If
     End Sub
+
+
+    Private Sub btnEnd_Click(sender As Object, e As EventArgs) Handles btnEnd.Click
+        Dim result As Integer = MessageBox.Show("Do you want to save before exiting?", "Unsaved progress will be lost", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question)
+        If result = DialogResult.Cancel Then
+        ElseIf result = DialogResult.No Then
+            MessageBox.Show("Thanks for playing.")
+            End
+        ElseIf result = DialogResult.Yes Then
+            'TODO - Save level, experience and currency to a text document through a function
+            MessageBox.Show("Progress saved. Thanks for playing.")
+            End
+        End If
+    End Sub
+
 End Class
