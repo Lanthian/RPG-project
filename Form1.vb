@@ -1,10 +1,10 @@
 Public Class frmRPGproject
 
     '****Defines variables used universally****
-    Dim exp, prevExp, lvl, prevLvl, expToLvl, taskFreq, turn As Integer
+    Dim exp, prevExp, lvl, prevLvl, expToLvl, taskFreq, turn, expCurve As Integer
     'TODO Dim cash as Integer
     Dim task, diff As String
-    'TODO Dim db As Database = New Database()
+    'Dim db As DataBase = New DataBase()
     Dim taskFreqArray() As Integer = {0, 0, 0, 0} 'TODO - 3,4? Skip variable set if possible
 
     Private Sub frmRPGProject_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -15,6 +15,7 @@ Public Class frmRPGproject
         prevExp = 0
         prevLvl = 0
         turn = 0
+        expCurve = 2
         'TODO cash = 0
         task = ""
         diff = ""
@@ -67,7 +68,7 @@ Public Class frmRPGproject
             ElseIf diff = "Easy" Then
                 exp -= 1
             End If
-            '****Checks task frequency And deducts EXP if applicable****
+            '****Checks task frequency and deducts EXP if applicable****
             For i = 0 To 3
                 If taskFreq = i Then
                     taskFreqArray(i) += 1
@@ -88,13 +89,15 @@ Public Class frmRPGproject
                 prevLvl = lvl
                 exp -= expToLvl
                 lvl += 1
-                expToLvl += 5
+                expToLvl += expCurve
                 lboTask.items.add("LEVEL UP: " & prevLvl & " -> " & lvl)
                 'TODO cash += x
             End If
             '****Displays Output****
             lblExp.Text = ("EXP: " & exp)
             lblLvl.Text = ("LVL: " & lvl)
+            pgbExp.Maximum = expToLvl
+            pgbExp.Value = exp
             'TODO lblCash.text = ("$$$: " & cash)
         End If
     End Sub
