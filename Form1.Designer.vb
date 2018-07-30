@@ -38,9 +38,10 @@ Partial Class frmRPGproject
         Me.pgbExp = New System.Windows.Forms.ProgressBar()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
-        Me.btnSwap = New System.Windows.Forms.Button()
+        Me.btnFlash = New System.Windows.Forms.Button()
         Me.lblCash = New System.Windows.Forms.Label()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
+        Me.lblFlashCost = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
@@ -176,7 +177,7 @@ Partial Class frmRPGproject
         Me.lboTask.ItemHeight = 15
         Me.lboTask.Location = New System.Drawing.Point(212, 118)
         Me.lboTask.Name = "lboTask"
-        Me.lboTask.Size = New System.Drawing.Size(252, 214)
+        Me.lboTask.Size = New System.Drawing.Size(252, 229)
         Me.lboTask.TabIndex = 12
         '
         'pgbExp
@@ -212,15 +213,15 @@ Partial Class frmRPGproject
         Me.GroupBox3.TabIndex = 15
         Me.GroupBox3.TabStop = False
         '
-        'btnSwap
+        'btnFlash
         '
-        Me.btnSwap.Font = New System.Drawing.Font("Calibri", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSwap.Location = New System.Drawing.Point(72, 14)
-        Me.btnSwap.Name = "btnSwap"
-        Me.btnSwap.Size = New System.Drawing.Size(115, 23)
-        Me.btnSwap.TabIndex = 5
-        Me.btnSwap.Text = "Shop"
-        Me.btnSwap.UseVisualStyleBackColor = True
+        Me.btnFlash.Font = New System.Drawing.Font("Calibri", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnFlash.Location = New System.Drawing.Point(93, 21)
+        Me.btnFlash.Name = "btnFlash"
+        Me.btnFlash.Size = New System.Drawing.Size(94, 23)
+        Me.btnFlash.TabIndex = 5
+        Me.btnFlash.Text = "Cash Level Up"
+        Me.btnFlash.UseVisualStyleBackColor = True
         '
         'lblCash
         '
@@ -228,25 +229,36 @@ Partial Class frmRPGproject
         Me.lblCash.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblCash.Location = New System.Drawing.Point(9, 16)
         Me.lblCash.Name = "lblCash"
-        Me.lblCash.Size = New System.Drawing.Size(54, 18)
+        Me.lblCash.Size = New System.Drawing.Size(62, 18)
         Me.lblCash.TabIndex = 14
-        Me.lblCash.Text = "BUX: $0"
+        Me.lblCash.Text = "CASH: $0"
         '
         'GroupBox4
         '
-        Me.GroupBox4.Controls.Add(Me.btnSwap)
+        Me.GroupBox4.Controls.Add(Me.lblFlashCost)
+        Me.GroupBox4.Controls.Add(Me.btnFlash)
         Me.GroupBox4.Controls.Add(Me.lblCash)
         Me.GroupBox4.Location = New System.Drawing.Point(12, 290)
         Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Size = New System.Drawing.Size(194, 44)
+        Me.GroupBox4.Size = New System.Drawing.Size(194, 59)
         Me.GroupBox4.TabIndex = 16
         Me.GroupBox4.TabStop = False
+        '
+        'lblFlashCost
+        '
+        Me.lblFlashCost.AutoSize = True
+        Me.lblFlashCost.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblFlashCost.Location = New System.Drawing.Point(9, 34)
+        Me.lblFlashCost.Name = "lblFlashCost"
+        Me.lblFlashCost.Size = New System.Drawing.Size(67, 18)
+        Me.lblFlashCost.TabIndex = 15
+        Me.lblFlashCost.Text = "COST: $10"
         '
         'frmRPGproject
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(478, 343)
+        Me.ClientSize = New System.Drawing.Size(478, 359)
         Me.Controls.Add(Me.GroupBox4)
         Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.GroupBox2)
@@ -285,7 +297,8 @@ Partial Class frmRPGproject
     Friend WithEvents pgbExp As ProgressBar
     Friend WithEvents GroupBox2 As GroupBox
     Friend WithEvents GroupBox3 As GroupBox
-    Friend WithEvents btnSwap As Button
+    Friend WithEvents btnFlash As Button
     Friend WithEvents lblCash As Label
     Friend WithEvents GroupBox4 As GroupBox
+    Friend WithEvents lblFlashCost As Label
 End Class
