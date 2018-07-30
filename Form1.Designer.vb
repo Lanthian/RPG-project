@@ -38,9 +38,13 @@ Partial Class frmRPGproject
         Me.pgbExp = New System.Windows.Forms.ProgressBar()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.btnSwap = New System.Windows.Forms.Button()
+        Me.lblCash = New System.Windows.Forms.Label()
+        Me.GroupBox4 = New System.Windows.Forms.GroupBox()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
+        Me.GroupBox4.SuspendLayout()
         Me.SuspendLayout()
         '
         'btnAdd
@@ -139,7 +143,7 @@ Partial Class frmRPGproject
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Modern No. 20", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(6, 10)
+        Me.Label3.Location = New System.Drawing.Point(30, 10)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(291, 34)
         Me.Label3.TabIndex = 9
@@ -150,14 +154,14 @@ Partial Class frmRPGproject
         Me.GroupBox1.Controls.Add(Me.Label3)
         Me.GroupBox1.Location = New System.Drawing.Point(12, 12)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(313, 47)
+        Me.GroupBox1.Size = New System.Drawing.Size(379, 47)
         Me.GroupBox1.TabIndex = 10
         Me.GroupBox1.TabStop = False
         '
         'btnEnd
         '
         Me.btnEnd.BackColor = System.Drawing.Color.LightCoral
-        Me.btnEnd.Location = New System.Drawing.Point(331, 19)
+        Me.btnEnd.Location = New System.Drawing.Point(397, 19)
         Me.btnEnd.Name = "btnEnd"
         Me.btnEnd.Size = New System.Drawing.Size(67, 40)
         Me.btnEnd.TabIndex = 11
@@ -168,18 +172,19 @@ Partial Class frmRPGproject
         '
         Me.lboTask.Font = New System.Drawing.Font("Calibri", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lboTask.FormattingEnabled = True
+        Me.lboTask.HorizontalScrollbar = True
         Me.lboTask.ItemHeight = 15
         Me.lboTask.Location = New System.Drawing.Point(212, 118)
         Me.lboTask.Name = "lboTask"
-        Me.lboTask.Size = New System.Drawing.Size(186, 169)
+        Me.lboTask.Size = New System.Drawing.Size(252, 214)
         Me.lboTask.TabIndex = 12
         '
         'pgbExp
         '
         Me.pgbExp.BackColor = System.Drawing.SystemColors.Control
-        Me.pgbExp.Location = New System.Drawing.Point(66, 10)
+        Me.pgbExp.Location = New System.Drawing.Point(72, 10)
         Me.pgbExp.Name = "pgbExp"
-        Me.pgbExp.Size = New System.Drawing.Size(314, 37)
+        Me.pgbExp.Size = New System.Drawing.Size(374, 37)
         Me.pgbExp.Style = System.Windows.Forms.ProgressBarStyle.Continuous
         Me.pgbExp.TabIndex = 13
         '
@@ -190,7 +195,7 @@ Partial Class frmRPGproject
         Me.GroupBox2.Controls.Add(Me.lblLvl)
         Me.GroupBox2.Location = New System.Drawing.Point(12, 60)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(386, 53)
+        Me.GroupBox2.Size = New System.Drawing.Size(452, 53)
         Me.GroupBox2.TabIndex = 14
         Me.GroupBox2.TabStop = False
         '
@@ -207,11 +212,42 @@ Partial Class frmRPGproject
         Me.GroupBox3.TabIndex = 15
         Me.GroupBox3.TabStop = False
         '
+        'btnSwap
+        '
+        Me.btnSwap.Font = New System.Drawing.Font("Calibri", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnSwap.Location = New System.Drawing.Point(72, 14)
+        Me.btnSwap.Name = "btnSwap"
+        Me.btnSwap.Size = New System.Drawing.Size(115, 23)
+        Me.btnSwap.TabIndex = 5
+        Me.btnSwap.Text = "Shop"
+        Me.btnSwap.UseVisualStyleBackColor = True
+        '
+        'lblCash
+        '
+        Me.lblCash.AutoSize = True
+        Me.lblCash.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblCash.Location = New System.Drawing.Point(9, 16)
+        Me.lblCash.Name = "lblCash"
+        Me.lblCash.Size = New System.Drawing.Size(54, 18)
+        Me.lblCash.TabIndex = 14
+        Me.lblCash.Text = "BUX: $0"
+        '
+        'GroupBox4
+        '
+        Me.GroupBox4.Controls.Add(Me.btnSwap)
+        Me.GroupBox4.Controls.Add(Me.lblCash)
+        Me.GroupBox4.Location = New System.Drawing.Point(12, 290)
+        Me.GroupBox4.Name = "GroupBox4"
+        Me.GroupBox4.Size = New System.Drawing.Size(194, 44)
+        Me.GroupBox4.TabIndex = 16
+        Me.GroupBox4.TabStop = False
+        '
         'frmRPGproject
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(412, 303)
+        Me.ClientSize = New System.Drawing.Size(478, 343)
+        Me.Controls.Add(Me.GroupBox4)
         Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.lboTask)
@@ -227,6 +263,8 @@ Partial Class frmRPGproject
         Me.GroupBox2.PerformLayout()
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox3.PerformLayout()
+        Me.GroupBox4.ResumeLayout(False)
+        Me.GroupBox4.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -247,4 +285,7 @@ Partial Class frmRPGproject
     Friend WithEvents pgbExp As ProgressBar
     Friend WithEvents GroupBox2 As GroupBox
     Friend WithEvents GroupBox3 As GroupBox
+    Friend WithEvents btnSwap As Button
+    Friend WithEvents lblCash As Label
+    Friend WithEvents GroupBox4 As GroupBox
 End Class
