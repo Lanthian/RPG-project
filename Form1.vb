@@ -1,7 +1,13 @@
 Public Class frmRPGproject
 
     '****Defines variables used universally****
-    Dim exp, prevExp, lvl, prevLvl, expToLvl, taskFreq, turn, expCurve As Integer
+    Dim exp, prevExp, lvl, prevLvl, expToLvl, taskFreq, turn, expCurve, cash As Integer
+
+    Private Sub btnSwap_Click(sender As Object, e As EventArgs) Handles btnSwap.Click
+        '****Swaps first and second form visibility****
+        frmRPGshop.Show()
+        Me.Hide()
+    End Sub
     'TODO Dim cash as Integer
     Dim task, diff As String
     'Dim db As DataBase = New DataBase()
@@ -16,7 +22,7 @@ Public Class frmRPGproject
         prevLvl = 0
         turn = 0
         expCurve = 2
-        'TODO cash = 0
+        cash = 0
         task = ""
         diff = ""
         taskFreq = 0
@@ -25,6 +31,8 @@ Public Class frmRPGproject
         taskFreqArray(1) = 0
         taskFreqArray(2) = 0
         taskFreqArray(3) = 0
+
+        frmRPGshop.Hide()
     End Sub
 
 
@@ -98,7 +106,7 @@ Public Class frmRPGproject
             lblLvl.Text = ("LVL: " & lvl)
             pgbExp.Maximum = expToLvl
             pgbExp.Value = exp
-            'TODO lblCash.text = ("$$$: " & cash)
+            'TODO lblCash.text = ("BUX: $" & cash)
         End If
     End Sub
 
