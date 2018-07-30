@@ -1,17 +1,33 @@
 Public Class frmRPGproject
 
     '****Defines variables used universally****
-    Dim exp, prevExp, lvl, prevLvl, expToLvl, taskFreq, turn, expCurve, cash As Integer
-
-    Private Sub btnSwap_Click(sender As Object, e As EventArgs) Handles btnSwap.Click
-        '****Swaps first and second form visibility****
-        frmRPGshop.Show()
-        Me.Hide()
-    End Sub
-    'TODO Dim cash as Integer
+    Dim exp, prevExp, lvl, prevLvl, expToLvl, taskFreq, turn, expCurve, cash, cashCurve, flashCost As Integer
     Dim task, diff As String
-    'Dim db As DataBase = New DataBase()
+    Dim db As DataBase = New DataBase()
     Dim taskFreqArray() As Integer = {0, 0, 0, 0} 'TODO - 3,4? Skip variable set if possible
+
+
+    Private Sub btnFlash_Click(sender As Object, e As EventArgs) Handles btnFlash.Click
+        '****Spends cash to level up****
+        If cash >= flashCost Then
+            prevLvl = lvl
+            lvl += 1
+            expToLvl += expCurve
+            lboTask.Items.Add("CASH SPENT: " & flashCost)
+            lboTask.Items.Add("LEVEL UP ($): " & prevLvl & " -> " & lvl)
+            flashCost += 2
+            lblFlashCost.Text = ("COST: $" & flashCost)
+            cash -= 12
+            '****Displays Output****
+            lblLvl.Text = ("LVL: " & lvl)
+            pgbExp.Maximum = expToLvl
+            pgbExp.Value = exp
+            lblCash.Text = ("CASH: $" & cash)
+        Else
+            MsgBox("You need at least $" & flashCost & " to used this feature.")
+        End If
+    End Sub
+
 
     Private Sub frmRPGProject_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         '****Sets variables to default or null****
@@ -23,9 +39,11 @@ Public Class frmRPGproject
         turn = 0
         expCurve = 2
         cash = 0
+        cashCurve = 2
         task = ""
         diff = ""
         taskFreq = 0
+        flashCost = 10
         'TODO Skip the below bit earlier if possible
         taskFreqArray(0) = 0
         taskFreqArray(1) = 0
@@ -37,12 +55,12 @@ Public Class frmRPGproject
 
 
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
-        '****Saves level, experience and currency to a text document through a function****
+        'TODO ****Saves level, experience and currency to a text document through a function****
     End Sub
 
 
     Private Sub btnLoad_Click(sender As Object, e As EventArgs) Handles btnLoad.Click
-        '****Retrieves level, experience and currency from a text document through a function****
+        'TODO ****Retrieves level, experience and currency from a text document through a function****
     End Sub
 
 
@@ -99,14 +117,14 @@ Public Class frmRPGproject
                 lvl += 1
                 expToLvl += expCurve
                 lboTask.items.add("LEVEL UP: " & prevLvl & " -> " & lvl)
-                'TODO cash += x
+                cash += cashCurve
             End If
             '****Displays Output****
             lblExp.Text = ("EXP: " & exp)
             lblLvl.Text = ("LVL: " & lvl)
             pgbExp.Maximum = expToLvl
             pgbExp.Value = exp
-            'TODO lblCash.text = ("BUX: $" & cash)
+            lblCash.Text = ("CASH: $" & cash)
         End If
     End Sub
 
