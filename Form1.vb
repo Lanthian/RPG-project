@@ -15,9 +15,9 @@ Public Class frmRPGproject
             expToLvl += expCurve
             lboTask.Items.Add("CASH SPENT: " & flashCost)
             lboTask.Items.Add("LEVEL UP ($): " & prevLvl & " -> " & lvl)
+            cash -= flashCost
             flashCost += 2
             lblFlashCost.Text = ("COST: $" & flashCost)
-            cash -= 12
             '****Displays Output****
             lblLvl.Text = ("LVL: " & lvl)
             pgbExp.Maximum = expToLvl
@@ -49,8 +49,6 @@ Public Class frmRPGproject
         taskFreqArray(1) = 0
         taskFreqArray(2) = 0
         taskFreqArray(3) = 0
-
-        frmRPGshop.Hide()
     End Sub
 
 
