@@ -3,7 +3,6 @@ Public Class frmRPGproject
     '****Defines variables used universally****
     Dim exp, prevExp, lvl, prevLvl, expToLvl, taskFreq, turn, expCurve, cash, cashCurve, flashCost As Integer
     Dim task, diff As String
-    Dim db As DataBase = New DataBase()
     Dim taskFreqArray() As Integer = {0, 0, 0, 0} 'TODO - 3,4? Skip variable set if possible
 
 
@@ -37,18 +36,20 @@ Public Class frmRPGproject
         prevExp = 0
         prevLvl = 0
         turn = 0
-        expCurve = 2
+        expCurve = 1
         cash = 0
         cashCurve = 2
         task = ""
         diff = ""
         taskFreq = 0
-        flashCost = 10
+        flashCost = 4
         ''TODO Skip the below bit earlier if possible
         'taskFreqArray(0) = 0
         'taskFreqArray(1) = 0
         'taskFreqArray(2) = 0
         'taskFreqArray(3) = 0
+
+        lblFlashCost.Text = ("COST: $" & flashCost)
     End Sub
 
 
@@ -93,11 +94,13 @@ Public Class frmRPGproject
                 exp -= 1
             End If
             '****Checks task frequency and deducts EXP if applicable****
-            For i = 0 To 3
+            For i = 1 To 4
                 If taskFreq = i Then
                     taskFreqArray(i) += 1
-                    For n = 0 To 3 And Not i
-                        taskFreqArray(n) = 0
+                    For n = 0 To 3
+                        If n = i Then
+                        Else taskFreqArray(n) = 0
+                        End If
                     Next
                 End If
             Next
