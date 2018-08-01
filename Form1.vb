@@ -15,7 +15,7 @@
 Public Class frmRPGproject
 
     '****Defines variables used universally****
-    Dim exp, prevExp, lvl, prevLvl, expToLvl, taskFreq, turn, expCurve, cash, cashCurve, flashCost As Integer
+    Dim exp, prevExp, lvl, prevLvl, expToLvl, taskFreq, turn, expCurve, cash, cashCurve, flashCost, flashCurve As Integer
     Dim task, diff As String
     Dim taskFreqArray() As Integer = {0, 0, 0, 0}
 
@@ -29,7 +29,7 @@ Public Class frmRPGproject
             lboTask.Items.Add("CASH SPENT: " & flashCost)
             lboTask.Items.Add("LEVEL UP ($): " & prevLvl & " -> " & lvl)
             cash -= flashCost
-            flashCost += 2
+            flashCost += flashCurve
             '****Displays Output****
             lblFlashCost.Text = ("COST: $" & flashCost)
             lblLvl.Text = ("LVL: " & lvl)
@@ -57,6 +57,7 @@ Public Class frmRPGproject
         diff = ""
         taskFreq = 0
         flashCost = 4
+        flashCurve = 2
     End Sub
 
 
