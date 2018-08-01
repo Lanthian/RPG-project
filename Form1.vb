@@ -57,12 +57,6 @@ Public Class frmRPGproject
         diff = ""
         taskFreq = 0
         flashCost = 4
-        ''TODO Skip the below bit earlier if possible
-        'taskFreqArray(0) = 0
-        'taskFreqArray(1) = 0
-        'taskFreqArray(2) = 0
-        'taskFreqArray(3) = 0
-        lblFlashCost.Text = ("COST: $" & flashCost)
     End Sub
 
 
