@@ -1,9 +1,32 @@
+'***************************** Module Header *******************************
+' Module Name:  frmRPGproject.vb
+' Project:      RPG Projcet
+' Authors:      Liam Anthian, Scott Daisley
+' Copyright (c) Microsoft Corporation.
+' 
+' A program/game with the intent of motivating users to complete tasks such 
+' as homework and exercise for the reward of receiving experience and
+' levelling up.
+'
+' This source is subject to the Microsoft Public License.
+' See http://www.microsoft.com/opensource/licenses.mspx#Ms-PL.
+' All other rights reserved.
+' 
+' THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND,
+' EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED 
+' WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
+'***************************************************************************
+
+
+''' <summary>
+''' The below Class handles all the input, processing, storage and outputing of variables.
+''' </summary>
 Public Class frmRPGproject
 
     '****Defines variables used universally****
     Dim exp, prevExp, lvl, prevLvl, expToLvl, taskFreq, turn, expCurve, cash, cashCurve, flashCost As Integer
     Dim task, diff As String
-    Dim taskFreqArray() As Integer = {0, 0, 0, 0} 'TODO - 3,4? Skip variable set if possible
+    Dim taskFreqArray() As Integer = {0, 0, 0, 0}
 
 
     Private Sub btnFlash_Click(sender As Object, e As EventArgs) Handles btnFlash.Click
@@ -48,18 +71,64 @@ Public Class frmRPGproject
         'taskFreqArray(1) = 0
         'taskFreqArray(2) = 0
         'taskFreqArray(3) = 0
-
         lblFlashCost.Text = ("COST: $" & flashCost)
     End Sub
 
 
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
-        'TODO ****Saves level, experience and currency to a text document through a function****
+        '****Saves variables to a text document****
+        Dim Save1 As String = My.Application.Info.DirectoryPath + "\RPGsaveFile.txt"
+        '****Check for savefile existence****
+        If System.IO.File.Exists(Save1) = True Then
+            Dim objWriter As New System.IO.StreamWriter(Save1)
+            Dim lvl, exp, expToLvl, turn, cash, expCurve, taskFreq, flashCost As Integer
+            '****Write variables to file****
+            objWriter.Write(lvl)
+            objWriter.WriteLine()
+            objWriter.Write(exp)
+            objWriter.WriteLine()
+            objWriter.Write(expToLvl)
+            objWriter.WriteLine()
+            objWriter.Write(turn)
+            objWriter.WriteLine()
+            objWriter.Write(cash)
+            objWriter.WriteLine()
+            objWriter.Write(expCurve)
+            objWriter.WriteLine()
+            objWriter.Write(taskFreq)
+            objWriter.WriteLine()
+            objWriter.Write(flashCost)
+            objWriter.Close()
+            MessageBox.Show("File saved.")
+        Else
+            MessageBox.Show("File could not be found.")
+        End If
+        'NOTE: Save system credit to Connor Anthian
     End Sub
 
 
     Private Sub btnLoad_Click(sender As Object, e As EventArgs) Handles btnLoad.Click
-        'TODO ****Retrieves level, experience and currency from a text document through a function****
+        '****Retrieves variables from a text document****
+        Dim Load1 As String = My.Application.Info.DirectoryPath + "\RPGsaveFile.txt"
+        '****Check file existence****
+        If System.IO.File.Exists(Load1) = True Then
+            Load1 = My.Computer.FileSystem.ReadAllText(My.Application.Info.DirectoryPath + "\RPGsaveFile.txt")
+            Dim lvl, exp, expToLvl, turn, cash, expCurve, taskFreq, flashCost As Integer
+            Dim array() As String
+            '****Setting Defined Variables****
+            array = Load1.Split(vbNewLine)
+            lvl = array(0)
+            exp = array(1)
+            expToLvl = array(2)
+            turn = array(3)
+            cash = array(4)
+            expCurve = array(5)
+            taskFreq = array(6)
+            flashCost = array(7)
+            MessageBox.Show("File loaded.")
+        Else
+            MessageBox.Show("File could not be found.")
+        End If
     End Sub
 
 
@@ -110,14 +179,14 @@ Public Class frmRPGproject
                 End If
             Next
             '****Displays inputs in listbox****
-            lboTask.items.add("[T" & turn & "] " & task & " @ " & diff & " for " & (exp - prevExp))
+            lboTask.Items.Add("[T" & turn & "] " & task & " @ " & diff & " for " & (exp - prevExp))
             '****Converts EXP to level and displays if applicable****
             If exp >= expToLvl Then
                 prevLvl = lvl
                 exp -= expToLvl
                 lvl += 1
                 expToLvl += expCurve
-                lboTask.items.add("LEVEL UP: " & prevLvl & " -> " & lvl)
+                lboTask.Items.Add("LEVEL UP: " & prevLvl & " -> " & lvl)
                 cash += cashCurve
             End If
             '****Displays Output****
@@ -137,9 +206,32 @@ Public Class frmRPGproject
             MessageBox.Show("Thanks for playing.")
             End
         ElseIf result = DialogResult.Yes Then
-            'TODO - Save level, experience and currency to a text document through a function
-            MessageBox.Show("Progress saved. Thanks for playing.")
-            End
+            '****Check btnSave code for comments on below code****
+            Dim Save1 As String = My.Application.Info.DirectoryPath + "\RPGsaveFile.txt"
+            If System.IO.File.Exists(Save1) = True Then
+                Dim objWriter As New System.IO.StreamWriter(Save1)
+                Dim lvl, exp, expToLvl, turn, cash, expCurve, taskFreq, flashCost As Integer
+                objWriter.Write(lvl)
+                objWriter.WriteLine()
+                objWriter.Write(exp)
+                objWriter.WriteLine()
+                objWriter.Write(expToLvl)
+                objWriter.WriteLine()
+                objWriter.Write(turn)
+                objWriter.WriteLine()
+                objWriter.Write(cash)
+                objWriter.WriteLine()
+                objWriter.Write(expCurve)
+                objWriter.WriteLine()
+                objWriter.Write(taskFreq)
+                objWriter.WriteLine()
+                objWriter.Write(flashCost)
+                objWriter.Close()
+                MessageBox.Show("Progress saved. Thanks for playing.")
+                End
+            Else
+                MessageBox.Show("File could not be found.")
+            End If
         End If
     End Sub
 
