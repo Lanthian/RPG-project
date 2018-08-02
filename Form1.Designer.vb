@@ -250,9 +250,9 @@ Partial Class frmRPGproject
         Me.lblFlashCost.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblFlashCost.Location = New System.Drawing.Point(9, 34)
         Me.lblFlashCost.Name = "lblFlashCost"
-        Me.lblFlashCost.Size = New System.Drawing.Size(60, 18)
+        Me.lblFlashCost.Size = New System.Drawing.Size(67, 18)
         Me.lblFlashCost.TabIndex = 15
-        Me.lblFlashCost.Text = "COST: $4"
+        Me.lblFlashCost.Text = "COST: $10"
         '
         'frmRPGproject
         '
@@ -267,6 +267,8 @@ Partial Class frmRPGproject
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.btnSave)
         Me.Controls.Add(Me.btnLoad)
+        Me.MaximumSize = New System.Drawing.Size(494, 398)
+        Me.MinimumSize = New System.Drawing.Size(494, 398)
         Me.Name = "frmRPGproject"
         Me.Text = "RPG-Project"
         Me.GroupBox1.ResumeLayout(False)
