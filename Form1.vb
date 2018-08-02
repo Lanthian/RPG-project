@@ -15,7 +15,7 @@
 Public Class frmRPGproject
 
     '****Defines variables used universally****
-    Dim exp, prevExp, lvl, prevLvl, expToLvl, taskFreq, turn, expCurve, cash, cashCurve, flashCost, flashCurve As Integer
+    Dim exp, prevExp, lvl, prevLvl, expToLvl, taskFreq, turn, expCurve, cash, cashCurve, flashCost As Integer
     Dim task, diff As String
     Dim taskFreqArray() As Integer = {0, 0, 0, 0}
 
@@ -29,7 +29,7 @@ Public Class frmRPGproject
             lboTask.Items.Add("CASH SPENT: " & flashCost)
             lboTask.Items.Add("LEVEL UP ($): " & prevLvl & " -> " & lvl)
             cash -= flashCost
-            flashCost += flashCurve
+            flashCost += 2
             '****Displays Output****
             lblFlashCost.Text = ("COST: $" & flashCost)
             lblLvl.Text = ("LVL: " & lvl)
@@ -57,13 +57,19 @@ Public Class frmRPGproject
         diff = ""
         taskFreq = 0
         flashCost = 4
-        flashCurve = 2
+        ''TODO Skip the below bit earlier if possible
+        'taskFreqArray(0) = 0
+        'taskFreqArray(1) = 0
+        'taskFreqArray(2) = 0
+        'taskFreqArray(3) = 0
+        lblFlashCost.Text = ("COST: $" & flashCost)
     End Sub
 
 
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
         '****Saves variables to a text document****
         Dim Save1 As String = My.Application.Info.DirectoryPath + "\RPGsaveFile.txt"
+
         '****Check for savefile existence****
         If System.IO.File.Exists(Save1) = True Then
             Dim objWriter As New System.IO.StreamWriter(Save1)
@@ -86,10 +92,27 @@ Public Class frmRPGproject
             objWriter.Close()
             MessageBox.Show("File saved.")
         Else
-            '****Create RPGsaveFile if file does not exist****
+            '****Create new RPGsaveFile if file does not exist****
             MessageBox.Show("File could not be found.")
             System.IO.File.Create(My.Application.Info.DirectoryPath + "\RPGsaveFile.txt").Dispose()
-            MessageBox.Show("Blank RPGsaveFile created.")
+            MessageBox.Show("New RPGsaveFile created.")
+            Dim objWriter As New System.IO.StreamWriter(Save1)
+            objWriter.Write(1)
+            objWriter.WriteLine()
+            objWriter.Write(0)
+            objWriter.WriteLine()
+            objWriter.Write(5)
+            objWriter.WriteLine()
+            objWriter.Write(0)
+            objWriter.WriteLine()
+            objWriter.Write(0)
+            objWriter.WriteLine()
+            objWriter.Write(1)
+            objWriter.WriteLine()
+            objWriter.Write(0)
+            objWriter.WriteLine()
+            objWriter.Write(4)
+            objWriter.Close()
         End If
         'NOTE: Save system credit to Connor Anthian
     End Sub
@@ -227,7 +250,24 @@ Public Class frmRPGproject
             Else
                 MessageBox.Show("File could not be found.")
                 System.IO.File.Create(My.Application.Info.DirectoryPath + "\RPGsaveFile.txt").Dispose()
-                MessageBox.Show("Blank RPGsaveFile created.")
+                MessageBox.Show("New RPGsaveFile created.")
+                Dim objWriter As New System.IO.StreamWriter(Save1)
+                objWriter.Write(1)
+                objWriter.WriteLine()
+                objWriter.Write(0)
+                objWriter.WriteLine()
+                objWriter.Write(5)
+                objWriter.WriteLine()
+                objWriter.Write(0)
+                objWriter.WriteLine()
+                objWriter.Write(0)
+                objWriter.WriteLine()
+                objWriter.Write(1)
+                objWriter.WriteLine()
+                objWriter.Write(0)
+                objWriter.WriteLine()
+                objWriter.Write(4)
+                objWriter.Close()
             End If
         End If
     End Sub
