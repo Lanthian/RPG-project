@@ -4,6 +4,11 @@
 2018.07.20.xxxx:            Issue(In game currency) opened
 2018.07.20.xxxx:            Issue(Saving system) opened
 2018.07.20.xxxx:            Issue(Different tasks) opened
+2018.07.20.xxxx:            Issue(Level up reward system) opened
+2018.07.20.xxxx:            Issue(Experience bar graphic) opened
+2018.07.20.xxxx:            Issue(Level, Experience and Currency Labels) opened
+2018.07.20.xxxx:            Issue(Task difficulty system) opened
+2018.07.20.xxxx:            Issue(User input Method) opened
 
 2018.07.23.xxxx:            XLSX spreadsheet with EXP numbers was added by Liam. 
 
@@ -22,12 +27,15 @@
 2018.07.30.xxxx:            Issue(Level up reward system) closed
 2018.07.30.xxxx:            Issue(Level, Experience and Currency Labels) closed
 2018.07.30.xxxx:            Issue(User input Method) closed
+2018.07.20.xxxx:            Issue(In-program Shop) opened
 2018.07.30.xxxx:            Issue(In-program Shop) terminated and closed [wontfix]
+2018.07.30.xxxx:            Issue(Task Frequency System) opened
 
 ----{AUGUST}----
 2018.08.01.xxxx:            Form2.VB was added by Scott.
 2018.08.01.xxxx:            RPGsaveFile.text was uploaded by Scott.
 2018.08.01.xxxx:            Form1.Designer.VB was updated by Scott.
+2018.08.01.xxxx:            Issue(Title Screen) opened
 2018.08.01.xxxx:            Issue(Task Frequency System) closed
 2018.08.01.xxxx:            Issue(Title Screen) closed
 2018.08.01.xxxx:            Issue(Saving system) closed
@@ -35,3 +43,4 @@
 2018.08.02.0730:            Form1.VB & Form1.Designer.VB were updated by Liam.
 
 2018.08.03.0900:            Issue(Saving system) reopened
+2018.08.03.0900:            Issue(Saving system) closed
